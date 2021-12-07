@@ -1,36 +1,23 @@
-////https://towardsdatascience.com/turning-your-mobile-phone-camera-into-an-object-detector-on-your-own-1428055b8e01
-
 import React, {useRef, useEffect} from 'react';
 import './App.css';
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import backend from '@tensorflow/tfjs-backend-webgl';
 import * as tf from '@tensorflow/tfjs';
 
+
 function App() {
   // Loading the model comes with a Promise. Will proceed only when the promise is fulfilled.
-   const modelPromise = cocoSsd.load('mobilenet_v2');
-   //const modelPromise = cocoSsd.load('model.json');
-   //ssd is for localization
-   //mobilenet is for classification
+   //const modelPromise = cocoSsd.load('mobilenet_v2');
 
-  //const modelPromise = await tf.loadGraphModel('model.json');
-
-//  var modelPromise;
-
-  //async function run() {
-    //this.modelPromise = await tf.loadLayersModel('model.json');
-    //return this.modelPromise;
-  //}
+      var modelPromise = undefined;
+      var model_url = 'https://raw.githubusercontent.com/ad3707/H4D/main/webapp/model.json';
+      asyncLoadModel(model_url);
+      async function asyncLoadModel(model_url) {
+        modelPromise = await tf.loadGraphModel(model_url);
+        console.log('Model loaded');
+}
 
 
-  //run();
-  //const modelPromise = tf.keras.models.load_model('model.json')
-
-  //const modelPromise = tf.saved_model.load(f'/content/{output_directory}/saved_model')
-
-
-
-  // Define references to be used later
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const winWidth = window.innerWidth;
