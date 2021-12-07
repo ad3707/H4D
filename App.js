@@ -6,8 +6,6 @@ import * as tf from '@tensorflow/tfjs';
 
 
 function App() {
-  // Loading the model comes with a Promise. Will proceed only when the promise is fulfilled.
-   //const modelPromise = cocoSsd.load('mobilenet_v2');
 
       var modelPromise = undefined;
       var model_url = 'https://raw.githubusercontent.com/ad3707/H4D/main/webapp/model.json';
